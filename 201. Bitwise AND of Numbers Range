@@ -1,0 +1,28 @@
+class Solution:
+    def b(self,a):
+        x=a
+        k=[]
+        while x:
+            k.append(x%2)
+            x//=2
+            # print(x)
+        return k[::-1]
+    def rangeBitwiseAnd(self, left: int, right: int) -> int:
+        # print(left,right)
+        ans=0
+        # print(msb1,msb2)
+        msb1,msb2=0,0
+        while msb1==msb2 and (left!=0 and right!=0):
+            x=self.b(left)
+            y=self.b(right)
+            print(x,y)
+            msb1=len(x)-x.index(1)-1
+            msb2=len(y)-y.index(1)-1
+            print(msb1,msb2)
+            if msb1!=msb2:
+                return ans
+            z=2**msb1
+            ans+=z
+            left-=z
+            right-=z
+        return ans
