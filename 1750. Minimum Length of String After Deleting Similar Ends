@@ -1,0 +1,28 @@
+class Solution:
+    def minimumLength(self, s: str) -> int:
+        l=0
+        r=len(s)-1
+        while l<r and s[l]==s[r]:
+            # if s[l]!=s[r]:
+                # return r-l+1
+            temp=s[l]
+            while( l<=r and temp==s[l]):
+                # x+=1
+                l+=1
+            # print(l)
+            while(r>=l and temp==s[r]):
+                # y-=1
+                r-=1
+            # print(r)
+            # break
+            # l=x
+        # print(r)
+        # if r==l:
+        return r-l+1
+        # return 0
+        
+    
+
+
+
+            
