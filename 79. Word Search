@@ -1,0 +1,25 @@
+class Solution:
+    def solve(self,i,j,c,board,word):
+        if c==len(word):
+            return True
+        if i<0 or j<0 or i>=len(board) or j>=len(board[0])or board[i][j]!=word[c]:
+            return False
+        temp=board[i][j]
+        board[i][j]=-1
+
+        # path.append(board[i][j]) 
+        # c+=1
+        # board[i][j]=-1
+        if self.solve(i+1,j,c+1,board,word) or self.solve(i-1,j,c+1,board,word) or self.solve(i,j+1,c+1,board,word)or self.solve(i,j-1,c+1,board,word):
+            return True
+        board[i][j]=temp
+        return  False
+    def exist(self, board: List[List[str]], word: str) -> bool:
+        for i in range(len(board)):
+            for j in range(len(board[i])):
+                if self.solve(i,j,,board,word):
+                    return True
+        return False
+        # 
+        # print(ans)
+        
