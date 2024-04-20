@@ -1,0 +1,23 @@
+class Solution:
+    def dfs(self,i,j,land,ans):
+        if i<0 or j<0 or i>=len(land) or j>=len(land[0]) or land[i][j]==0:
+            return
+        land[i][j]=0
+        ans.append([i,j])
+        self.dfs(i-1,j,land,ans)
+        self.dfs(i+1,j,land,ans)
+        self.dfs(i,j-1,land,ans)
+        self.dfs(i,j+1,land,ans)
+        # ans.append([i,j])
+    def findFarmland(self, land: List[List[int]]) -> List[List[int]]:
+        ans=[]
+        for i in range(len(land)):
+            for j in range(len(land[i])):
+                if land[i][j]==1:
+                    fland=[]
+                    temp=[i,j]
+                    self.dfs(i,j,land,fland)
+                    print(fland)
+                    ans.append(temp+max(fland))
+        print(ans)
+        return ans
